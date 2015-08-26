@@ -40,12 +40,15 @@ roslaunch icog_face_tracker tracker.launch
 ROS Nodes
 ---------
 #### /tracker_node
+
 ###### Publications: 
  * /faces [icog_face_tracker/faces]
+ 
 ###### Subscriptions: 
  * /usb_cam_node/image_raw [sensor_msgs/Image]
  
 
 #### /usb_cam_node
+
 ###### Publications: 
  * /usb_cam_node/image_raw [sensor_msgs/Image]
