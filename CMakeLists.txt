@@ -7,12 +7,11 @@ project(icog_face_tracker)
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   image_transport
-  rospy
+  message_generation
+  roscpp
   sensor_msgs
   std_msgs
   usb_cam
-  message_generation
-  geometry_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -54,11 +53,6 @@ find_package(catkin REQUIRED COMPONENTS
 #   Message1.msg
 #   Message2.msg
 # )
-add_message_files(
-	FILES
-	facebox.msg
-	faces.msg
-)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -79,11 +73,6 @@ add_message_files(
 #   DEPENDENCIES
 #   sensor_msgs#   std_msgs
 # )
-generate_messages(
-	DEPENDENCIES
-	std_msgs
-	geometry_msgs
-)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -117,9 +106,8 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES icog_face_tracker
-#  CATKIN_DEPENDS cv_bridge image_transport rospy sensor_msgs std_msgs usb_cam
+#  CATKIN_DEPENDS cv_bridge image_transport message_generation roscpp sensor_msgs std_msgs usb_cam
 #  DEPENDS system_lib
-CATKIN_DEPENDS message_runtime 
 )
 
 ###########
