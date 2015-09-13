@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   usb_cam
 )
+find_package(OpenCV REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -120,6 +121,9 @@ catkin_package(
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
+include_directories(
+  ${OpenCV_INCLUDE_DIRS}
+)
 
 ## Declare a C++ library
 # add_library(icog_face_tracker
@@ -133,6 +137,7 @@ include_directories(
 
 ## Declare a C++ executable
 # add_executable(icog_face_tracker_node src/icog_face_tracker_node.cpp)
+add_executable(tracker_node src/tracker.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -142,6 +147,8 @@ include_directories(
 # target_link_libraries(icog_face_tracker_node
 #   ${catkin_LIBRARIES}
 # )
+target_link_libraries(tracker_node ${catkin_LIBRARIES})
+target_link_libraries(tracker_node ${OpenCV_LIBS})
 
 #############
 ## Install ##
