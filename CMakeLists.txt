@@ -54,6 +54,11 @@ find_package(OpenCV REQUIRED)
 #   Message1.msg
 #   Message2.msg
 # )
+add_message_files(
+  FILES
+  facebox.msg
+  faces.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -74,6 +79,12 @@ find_package(OpenCV REQUIRED)
 #   DEPENDENCIES
 #   sensor_msgs#   std_msgs
 # )
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+  geometry_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -109,6 +120,7 @@ catkin_package(
 #  LIBRARIES icog_face_tracker
 #  CATKIN_DEPENDS cv_bridge image_transport message_generation roscpp sensor_msgs std_msgs usb_cam
 #  DEPENDS system_lib
+CATKIN_DEPENDS message_runtime 
 )
 
 ###########
