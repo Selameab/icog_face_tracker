@@ -15,6 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
 )
 find_package(OpenCV REQUIRED)
 
+add_subdirectory(src/3rdparty/cvblobs)
+add_subdirectory(src/libopentld)
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -137,6 +140,19 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
+set(
+    OPENTLD_INCLUDE_DIRS
+    src/3rdparty/cvblobs
+    src/3rdparty/libconfig
+    src/libopentld/tld
+    src/libopentld/mftracker
+    src/libopentld/imacq
+)
+
+include_directories(
+    ${OPENTLD_INCLUDE_DIRS}
+)
+
 ## Declare a C++ library
 # add_library(icog_face_tracker
 #   src/${PROJECT_NAME}/icog_face_tracker.cpp
@@ -150,6 +166,7 @@ include_directories(
 ## Declare a C++ executable
 # add_executable(icog_face_tracker_node src/icog_face_tracker_node.cpp)
 add_executable(tracker_node src/tracker.cpp)
+add_executable(tracker_tld_node src/tracker_tld.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -161,6 +178,9 @@ add_executable(tracker_node src/tracker.cpp)
 # )
 target_link_libraries(tracker_node ${catkin_LIBRARIES})
 target_link_libraries(tracker_node ${OpenCV_LIBS})
+
+target_link_libraries(tracker_tld_node ${catkin_LIBRARIES})
+target_link_libraries(tracker_tld_node libopentld cvblobs ${OpenCV_LIBS})
 
 #############
 ## Install ##
