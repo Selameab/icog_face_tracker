@@ -1,7 +1,7 @@
 icog_face_tracker
 ================
 
-A ROS package for face detection and recognition using OpenCV.
+A ROS package for face detection using OpenCV and OpenTLD.
 
 Prerequisites
 -------------
@@ -34,12 +34,12 @@ $ catkin_make
 Run
 ---
 ```sh
-roslaunch icog_face_tracker tracker.launch
+roslaunch icog_face_tracker tracker_tld.launch
 ```
 
 ROS Nodes
 ---------
-#### /tracker_node
+#### /tracker_tld_node
 
 ###### Publications: 
  * /faces [icog_face_tracker/faces]
